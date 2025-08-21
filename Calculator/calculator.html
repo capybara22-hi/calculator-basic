@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .block {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 300px;
+            height: 400px;
+            position: relative;
+        }
+
+        .moniter {
+            width: 95%;
+            height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 5px;
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        .moniter .operation {
+            overflow-y: scroll;
+            height: 70%;
+            scrollbar-width: none;
+        }
+
+        .moniter .result {
+            float: right;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: separate;
+            border-radius: 10px;
+        }
+
+        table {
+            position: absolute;
+            bottom: 0;
+        }
+
+        td {
+            width: 25%;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="block">
+        <div class="moniter">
+            <div class="operation"></div>
+            <div class="result"></div>
+        </div>
+        <div class="number">
+            <table style="width: 100%;">
+                <tr class="">
+                    <td class="CE" onclick="">CE</td>
+                    <td class="C" onclick="clearValue()">C</td>
+                    <td class="backspace" onclick="backspace()"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                            height="14" viewBox="0 0 24 24">
+                            <path fill="#000"
+                                d="M19 15.59L17.59 17L14 13.41L10.41 17L9 15.59L12.59 12L9 8.41L10.41 7L14 10.59L17.59 7L19 8.41L15.41 12zM22 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7c-.69 0-1.23-.36-1.59-.89L0 12l5.41-8.12C5.77 3.35 6.31 3 7 3zm0 2H7l-4.72 7L7 19h15z" />
+                        </svg></td>
+                    <td class="divide" onclick="addValue('/')">/</td>
+                </tr>
+                <tr class="">
+                    <td class="seven" onclick="addValue('7')">7</td>
+                    <td class="eight" onclick="addValue('8')">8</td>
+                    <td class="nine" onclick="addValue('9')">9</td>
+                    <td class="core" onclick="addValue('*')">x</td>
+                </tr>
+                <tr class="">
+                    <td class="four" onclick="addValue('4')">4</td>
+                    <td class="five" onclick="addValue('5')">5</td>
+                    <td class="six" onclick="addValue('6')">6</td>
+                    <td class="minus" onclick="addValue('-')">-</td>
+                </tr>
+                <tr class="">
+                    <td class="one" onclick="addValue('1')">1</td>
+                    <td class="two" onclick="addValue('2')">2</td>
+                    <td class="three" onclick="addValue('3')">3</td>
+                    <td class="plus" onclick="addValue('+')">+</td>
+                </tr>
+                <tr class="">
+                    <td class="percent" onclick="addValue('%')">%</td>
+                    <td class="zero" onclick="addValue('0')">0</td>
+                    <td class="dot" onclick="addValue('.')">.</td>
+                    <td class="equal" onclick="equal()">=</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let chuoi = '';
+        let operation = document.querySelector('.operation');
+        let result = document.querySelector('.result');
+
+        function addValue(value) {
+            chuoi += value;
+            operation.textContent = chuoi;
+        }
+
+        function clearValue() {
+            chuoi = '';
+            operation.textContent = '';
+            result.textContent = '';
+        }
+
+        function equal() {
+            try {
+                result.textContent = eval(chuoi);
+            } catch {
+                result.textContent = "Error";
+            }
+        }
+
+        function backspace() {
+            chuoi = chuoi.slice(0, -1);
+            operation.textContent = chuoi;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count number</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .block {
+            text-align: center;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .show_number {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #ccc;
+            margin: 0 10px;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="block">
+        <h2>Count number is here!</h2>
+        <div class="box">
+            <svg class="minus" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1024 1024">
+                <path fill="#000"
+                    d="M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896M288 512a38.4 38.4 0 0 0 38.4 38.4h371.2a38.4 38.4 0 0 0 0-76.8H326.4A38.4 38.4 0 0 0 288 512" />
+            </svg>
+            <div class="show_number">0</div>
+            <svg class="plus" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1024 1024">
+                <path fill="#000"
+                    d="M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896m-38.4 409.6H326.4a38.4 38.4 0 1 0 0 76.8h147.2v147.2a38.4 38.4 0 0 0 76.8 0V550.4h147.2a38.4 38.4 0 0 0 0-76.8H550.4V326.4a38.4 38.4 0 1 0-76.8 0z" />
+            </svg>
+        </div>
+        <button class="btn">Restart</button>
+    </div>
+
+    <script>
+        const minus = document.querySelector('.minus');
+        const plus = document.querySelector('.plus');
+        const show_number = document.querySelector('.show_number');
+        const restart = document.querySelector('.btn');
+
+        let number = 0;
+
+        minus.addEventListener('click', () => {
+            if (number == 0) {
+                return;
+            } else {
+                number -= 1;
+                show_number.textContent = number;
+            }
+        })
+
+        plus.addEventListener('click', () => {
+            number += 1;
+            show_number.textContent = number;
+        })
+
+        restart.addEventListener('click', () => {
+            number = 0;
+            show_number.textContent = number;
+        })
+
+
+    </script>
+</body>
+
+</html>
